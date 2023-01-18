@@ -4,13 +4,14 @@ import sys
 
 r = redis.Redis('localhost', 6379, charset="utf-8", decode_responses=True)
 
-utilisateur = sys.argv[1]
-#utilisateur = "gueriot.benjamin@gmail.com"
+#utilisateur = sys.argv[1]
+utilisateur = "gueriot.benjamin@gmail.com"
 
 def setSession(utilisateur):
     r.set(f"{utilisateur}:count", 1)
     r.set(f"{utilisateur}:time", 1)
     r.expire(f"{utilisateur}:time", 600)
+    r.expire(f"{utilisateur}:count", 600)
     r.set(utilisateur, 1)
 
 def incrSession(utilisateur):
