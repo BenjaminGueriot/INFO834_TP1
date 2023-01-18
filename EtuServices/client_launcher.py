@@ -4,8 +4,8 @@ import sys
 
 r = redis.Redis('localhost', 6379, charset="utf-8", decode_responses=True)
 
-#utilisateur = sys.argv[1]
-utilisateur = "gueriot.benjamin@gmail.com"
+utilisateur = sys.argv[1]
+#utilisateur = "gueriot.benjamin@gmail.com"
 
 def setSession(utilisateur):
     r.set(f"{utilisateur}:count", 1)
